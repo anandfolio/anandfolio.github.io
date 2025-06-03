@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnandRam | Ethical Hacker | Red Teamer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glitch-overlay"></div>
+    
+    <header>
+        <nav>
+            <!-- Navbar -->
+            <div class="logo">
+                <span class="bracket">[</span>
+                <span class="hack-text">AnandRam Mohan</span>
+                <span class="bracket">]</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="glitch-effect">HOME</a></li>
+                <li><a href="#about" class="glitch-effect">ABOUT</a></li>
+                <li><a href="#blog" class="glitch-effect">BLOG</a></li>
+                <li><a href="#skills" class="glitch-effect">SKILLS</a></li>
+                <li><a href="#projects" class="glitch-effect">PROJECTS</a></li>
+                <li><a href="#contact" class="glitch-effect">CONTACT</a></li>
+                <li class="theme-toggle">
+                    <button id="theme-toggle-btn" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-overlay"></div>
+            <div class="matrix-rain" id="matrix-canvas"></div>
+            
+            <div class="hero-container">
+                <div class="hero-left">
+                    <div class="glitch-container">
+                        <h1 class="mega-glitch" data-text="DEFENSE IN DEPTH">DEFENSE IN DEPTH</h1>
+                        <div class="glitch-window">
+                            <div class="glitch-text">
+                                <span class="line">System Status: Active</span>
+                                <span class="line">Security Level: Maximum</span>
+                                <span class="line">Initializing Protocols...</span>
+                                <span class="line blink">_</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-subtitle">
+                        <div class="typing-container">
+                            <span class="typed-text"></span>
+                            <span class="cursor">&nbsp;</span>
+                        </div>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-circle">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="circle" stroke-dasharray="90, 100" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <div class="stat-number" data-target="90">80%</div>
+                            </div>
+                            <span class="stat-label">Learning Progress</span>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-circle">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="circle" stroke-dasharray="75, 100" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <div class="stat-number" data-target="75">12</div>
+                            </div>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-circle">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="circle" stroke-dasharray="95, 100" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <div class="stat-number" data-target="70">20</div>
+                            </div>
+                            <span class="stat-label">Skills Mastered</span>
+                        </div>
+                    </div>
+                    <div class="cta-container">
+                        <a href="#projects" class="cta-button primary">
+                            <span class="button-text">View Arsenal</span>
+                            <span class="button-glitch"></span>
+                            <span class="button-label">Explore My Work</span>
+                        </a>
+                        <a href="#contact" class="cta-button secondary">
+                            <span class="button-text">Initialize Contact</span>
+                            <span class="button-glitch"></span>
+                            <span class="button-label">Get In Touch</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-right">
+                    <div class="terminal-container">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="terminal-button close"></span>
+                                <span class="terminal-button minimize"></span>
+                                <span class="terminal-button maximize"></span>
+                            </div>
+                            <div class="terminal-title">hack.exe</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="line">><span class="command"> sudo initialize</span></div>
+                            <div class="line">Accessing mainframe...</div>
+                            <div class="line">Bypassing security protocols...</div>
+                            <div class="line">Establishing secure connection...</div>
+                            <div class="line success">Access granted.</div>
+                            <div class="line">><span class="cursor">_</span></div>
+                        </div>
+                    </div>
+                    <div class="cyber-sphere">
+                        <div class="sphere-container">
+                            <div class="ring ring-1"></div>
+                            <div class="ring ring-2"></div>
+                            <div class="ring ring-3"></div>
+                            <div class="core"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <span class="scroll-text">Scroll to Explore</span>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2 class="section-title" data-text="About">About</h2>
+            <div class="section-grid">
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Elite cybersecurity specialist with a passion for uncovering vulnerabilities and strengthening digital defenses. Specializing in penetration testing, security research, and ethical hacking.</p>
+                        <div class="skill-grid">
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3>Penetration Testing</h3>
+                                <p>Advanced system penetration and vulnerability assessment</p>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-bug"></i>
+                                </div>
+                                <h3>Bug Hunting</h3>
+                                <p>Professional bug bounty hunter with proven track record</p>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <h3>Security Research</h3>
+                                <p>Active security researcher and exploit developer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div class="code-buttons">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <span class="code-title">profile.java</span>
+                        </div>
+                        <div class="code-content">
+                            <pre><code>
+class SecuritySpecialist {
+    private:
+        vector<string> skills;
+        int experience;
+        bool available;
+    
+    public:
+        SecuritySpecialist() {
+            skills = {
+                "Penetration Testing",
+                "Vulnerability Assessment",
+                "Exploit Development",
+                "Security Research"
+            };
+            experience = 5;
+            available = true;
+        }
+};</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="section-title" data-text="Skills">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3 class="category-title">Attack Vectors</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Web Application Security</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-line"><span data-percent="95"></span></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Network Security</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-line"><span data-percent="90"></span></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Mobile Security</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-line"><span data-percent="85"></span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="category-title">Tools & Technologies</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item" data-tech="Python">
+                            <div class="tech-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Python</h4>
+                                <div class="tech-level">
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tech-item" data-tech="Kali Linux">
+                            <div class="tech-icon">
+                                <i class="fab fa-linux"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Kali Linux</h4>
+                                <div class="tech-level">
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tech-item" data-tech="Nikto">
+                            <div class="tech-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Nikto</h4>
+                                <div class="tech-level">
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot"></span>
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="tech-item" data-tech="Ghidra">
+                            <div class="tech-icon">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Ghidra</h4>
+                                <div class="tech-level">
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot"></span>
+                                    <span class="level-dot"></span>
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="tech-item" data-tech="Splunk">
+                            <div class="tech-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Splunk</h4>
+                                <div class="tech-level">
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot"></span>
+                                    <span class="level-dot"></span>
+                                </div>
+                            </div>
+                        </div>       
+                        <div class="tech-item" data-tech="Wireshark">
+                            <div class="tech-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Wireshark</h4>
+                                <div class="tech-level">
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot"></span>
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="tech-item" data-tech="Docker">
+                            <div class="tech-icon">
+                                <i class="fa-brands fa-docker"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Docker</h4>
+                                <div class="tech-level">
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="tech-item" data-tech="Metasploit">
+                            <div class="tech-icon">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Metasploit</h4>
+                                <div class="tech-level">
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot active"></span>
+                                    <span class="level-dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2 class="section-title" data-text="Projects">Projects</h2>
+            <div class="project-card">
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Cloud File Storage Server</h3>
+                        <div class="project-tags">
+                            <span>Docker</span>
+                            <span>Cloud</span>
+                        </div>
+                    </div>
+                    <p>Built a secure, self-hosted file storage solution using Docker on Kali Linux. Designed for private, local cloud usage.</p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Self-Hosted</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">0</span>
+                            <span class="stat-label">3rd Party Services</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/ArenRedd/cloud-file-storage-server.git" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="project-overlay"></div>
+            </div>
+            
+
+            <div class="project-card">
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Multi-Engine Search Platform</h3>
+                        <div class="project-tags">
+                            <span>Privacy</span>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                    <p>Created a self-hosted search engine using SearxNG that aggregates over 70 sources for fast, ad-free private browsing.</p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-value">70+</span>
+                            <span class="stat-label">Search Engines</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">0</span>
+                            <span class="stat-label">Tracking</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/ArenRedd/private-search-engine.git" class="project-link">Try Search <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="project-overlay"></div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Custom Cryptocurrency on Solana</h3>
+                        <div class="project-tags">
+                            <span>Blockchain</span>
+                            <span>Solana</span>
+                        </div>
+                    </div>
+                    <p>Designed and deployed a token on Solana Devnet with full metadata and IPFS storage, exploring Web3 fundamentals.</p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-value">✔️</span>
+                            <span class="stat-label">IPFS Hosted</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">1</span>
+                            <span class="stat-label">Token Launched</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/ArenRedd/arens-crypto-coin.git" class="project-link">View Token <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="project-overlay"></div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>AI Chatbot using LLaMA2</h3>
+                        <div class="project-tags">
+                            <span>Offline AI</span>
+                            <span>LLaMA2</span>
+                        </div>
+                    </div>
+                    <p>Built a fully offline AI assistant using LLaMA2 via Ollama, designed for direct, unfiltered local interaction without internet.</p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Offline</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">0</span>
+                            <span class="stat-label">API Calls</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/ArenRedd/AI-Chatbot-using-LLaMA2.git" class="project-link">View Chatbot <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="project-overlay"></div>
+            </div>            
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title" data-text="Contact">Contact</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="card-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Secure Communication</h3>
+                        </div>
+                        <p>All communications are end-to-end encrypted using military-grade encryption.</p>
+                    </div>
+                    <div class="contact-methods">
+                        <a href="mailto:anandrammohan9952@gmail.com" class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>Encrypted Email</span>
+                        </a>
+                        <a href="https://t.me/PeterDinklag" class="contact-method">
+                            <i class="fab fa-telegram"></i>
+                            <span>Secure Chat</span>
+                        </a>
+                        <a href="assets/keys/publickey.asc" class="contact-method" download>
+                            <i class="fas fa-key"></i>
+                            <span>PGP Key</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <div class="form-container">
+                        <div class="form-header">
+                            <div class="form-title">New Message</div>
+                            <div class="encryption-status">
+                                <i class="fas fa-lock"></i>
+                                <span>End-to-End Encrypted</span>
+                            </div>
+                        </div>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" required>
+                                <label for="name">Codename</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" required>
+                                <label for="email">Secure Email</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" required></textarea>
+                                <label for="message">Encrypted Message</label>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <span class="btn-text">Transmit Message</span>
+                                <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/ArenRedd" class="social-link"><i class="fab fa-github"></i></a>
+           
+            <a href="https://www.youtube.com/@arenred" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">&copy; 2025 | Secured with <span class="heart">❤</span> by AnandRam</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
