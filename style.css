@@ -2067,3 +2067,13 @@ footer {
     0%, 100% { text-shadow: 0 0 5px var(--primary-color); }
     50% { text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color), 0 0 40px var(--primary-color); }
 }
+
+.header-spacer {
+    height: 70px;
+}
+
+@media (max-width: 768px) {
+    .header-spacer {
+        height: 90px;
+    }
+}
