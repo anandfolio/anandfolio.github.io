@@ -1442,11 +1442,16 @@ footer {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    transition: all 0.3s ease;
 }
 
-.tech-icon {
-    font-size: 2.5rem;
-    color: var(--primary-color);
+.tech-item:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 
+        0 0 20px var(--primary-color),
+        0 0 40px var(--primary-color),
+        0 0 60px var(--primary-color);
+    z-index: 1;
 }
 
 .tech-info h4 {
