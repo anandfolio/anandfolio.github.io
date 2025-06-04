@@ -68,26 +68,53 @@ class MatrixRain {
 function setupHeaderToggle() {
     const header = document.querySelector('header');
     const toggleBtn = document.getElementById('header-toggle');
-    const icon = toggleBtn?.querySelector('.btn-icon');
+    const icon = toggleBtn.querySelector('.btn-icon');
+    const btnText = toggleBtn.querySelector('.btn-text');
     const spacer = document.querySelector('.header-spacer');
     
-    if (!header || !toggleBtn || !icon || !spacer) return;
+    if (!header || !toggleBtn) return;
 
     let isHeaderVisible = true;
+    const messages = [
+        "[ SYSTEM CONTROL ]",
+        "[ TOGGLE INTERFACE ]", 
+        "[ HEADER PROTOCOL ]",
+        "[ SECURITY LAYER ]"
+    ];
+    let messageIndex = 0;
 
     function updateHeader() {
         const mobileHeight = window.innerWidth <= 768 ? '120px' : '60px';
         header.style.transform = isHeaderVisible ? 'translateY(0)' : 'translateY(-100%)';
         spacer.style.height = isHeaderVisible ? mobileHeight : '0';
+        
+        // Update button appearance
         icon.textContent = isHeaderVisible ? '▾' : '▴';
+        toggleBtn.classList.toggle('header-hidden', !isHeaderVisible);
+        
+        // Rotate through different messages
+        messageIndex = (messageIndex + 1) % messages.length;
+        btnText.textContent = isHeaderVisible ? messages[messageIndex] : "[ RESTORE UI ]";
+        
+        // Add glitch effect on toggle
+        btnText.style.animation = 'none';
+        void btnText.offsetWidth; // Trigger reflow
+        btnText.style.animation = 'glitch-skew 0.3s';
     }
 
     toggleBtn.addEventListener('click', () => {
         isHeaderVisible = !isHeaderVisible;
         updateHeader();
-        console.log('Header toggled:', isHeaderVisible);
+        
+        // Terminal-like sound effect
+        const audio = new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...');
+        audio.volume = 0.3;
+        audio.play().catch(e => console.log('Audio play failed:', e));
     });
 
+    console.log(`%c[SYSTEM] Header ${isHeaderVisible ? 'activated' : 'deactivated'}`, 
+        'color: lime; font-family: monospace;');
+        
     window.addEventListener('resize', updateHeader);
     updateHeader();
 }
