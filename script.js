@@ -213,3 +213,252 @@ class TerminalSimulation {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
+
+// Terminal Simulation
+class HackerTerminal {
+    constructor() {
+        this.output = document.getElementById('terminal-output');
+        this.input = document.getElementById('terminal-input');
+        this.currentPath = '~';
+        this.commandHistory = [];
+        this.historyIndex = -1;
+        
+        this.fileSystem = {
+            '~': {
+                'README.txt': 'Welcome to Anandram\'s cyber domain.\n\nThis terminal provides direct access to my portfolio systems.\nType "help" for available commands.',
+                'projects': {
+                    'xor_cipher.md': 'A custom implementation of XOR cipher with multiple encryption modes.',
+                    'ai_assistant.md': 'Fully offline AI assistant using LLaMA2 and Ollama.',
+                    'solana_token.md': 'Custom cryptocurrency token deployed on Solana blockchain.'
+                },
+                'contact.txt': 'Email: anandrammohan9952@gmail.com\nGitHub: ArenRedd\nTelegram: @PeterDinklag'
+            }
+        };
+        
+        this.commands = {
+            help: this.help.bind(this),
+            about: this.about.bind(this),
+            projects: this.projects.bind(this),
+            contact: this.contact.bind(this),
+            clear: this.clear.bind(this),
+            ls: this.ls.bind(this),
+            cat: this.cat.bind(this),
+            cd: this.cd.bind(this),
+            banner: this.banner.bind(this),
+            sudo: this.sudo.bind(this)
+        };
+        
+        this.init();
+    }
+    
+    init() {
+        this.input.addEventListener('keydown', this.handleInput.bind(this));
+        this.printBanner();
+    }
+    
+    handleInput(e) {
+        if (e.key === 'Enter') {
+            const command = this.input.value.trim();
+            if (command) {
+                this.commandHistory.push(command);
+                this.historyIndex = this.commandHistory.length;
+                this.processCommand(command);
+            }
+            this.input.value = '';
+        } else if (e.key === 'ArrowUp') {
+            if (this.commandHistory.length > 0) {
+                if (this.historyIndex > 0) {
+                    this.historyIndex--;
+                }
+                this.input.value = this.commandHistory[this.historyIndex] || '';
+            }
+        } else if (e.key === 'ArrowDown') {
+            if (this.historyIndex < this.commandHistory.length - 1) {
+                this.historyIndex++;
+                this.input.value = this.commandHistory[this.historyIndex] || '';
+            } else {
+                this.historyIndex = this.commandHistory.length;
+                this.input.value = '';
+            }
+        }
+    }
+    
+    processCommand(input) {
+        const [command, ...args] = input.split(' ');
+        const output = document.createElement('div');
+        output.innerHTML = `<span class="prompt">anandram@portfolio:<span class="path">${this.currentPath}</span>$</span> ${input}`;
+        this.output.appendChild(output);
+        
+        if (this.commands[command]) {
+            const result = this.commands[command](...args);
+            if (result !== undefined) {
+                const resultElement = document.createElement('div');
+                resultElement.innerHTML = result;
+                this.output.appendChild(resultElement);
+            }
+        } else {
+            this.output.appendChild(this.createLine(`Command not found: ${command}. Type 'help' for available commands.`));
+        }
+        
+        this.output.scrollTop = this.output.scrollHeight;
+    }
+    
+    createLine(text, className = '') {
+        const line = document.createElement('div');
+        line.className = className;
+        line.textContent = text;
+        return line;
+    }
+    
+    // Command implementations
+    help() {
+        return `<pre>Available commands:
+  about      - Who is Anandram?
+  projects   - List my hacking creations
+  contact    - My contact information
+  clear      - Clear the terminal
+  ls         - List directory contents
+  cat [file] - View file contents
+  cd [dir]   - Change directory
+  banner     - Display system banner
+  sudo [cmd] - Execute privileged command</pre>`;
+    }
+    
+    about() {
+        return `Anandram Mohan - Cybersecurity Specialist
+
+Ethical hacker and security researcher with expertise in:
+- Penetration Testing
+- Vulnerability Assessment
+- Security Architecture
+- Cryptography
+
+Currently building private, secure systems for personal use.`;
+    }
+    
+    projects() {
+        return `My current projects:
+1. <span class="command">Cloud File Storage Server</span> - Private cloud solution
+2. <span class="command">Multi-Engine Search Platform</span> - Privacy-focused search
+3. <span class="command">Custom Cryptocurrency</span> - Solana blockchain token
+4. <span class="command">AI Chatbot</span> - Offline LLaMA2 implementation
+
+Type <span class="command">'ls projects'</span> for details.`;
+    }
+    
+    contact() {
+        return this.cat('contact.txt');
+    }
+    
+    clear() {
+        this.output.innerHTML = '';
+        return undefined;
+    }
+    
+    ls(path = this.currentPath) {
+        const folder = this.getFolder(path);
+        if (!folder) return `<span class="error">ls: cannot access '${path}': No such directory</span>`;
+        
+        const items = Object.keys(folder).map(item => {
+            if (typeof folder[item] === 'string') {
+                return `<span class="command">${item}</span>`;
+            } else {
+                return `<span style="color:#0af">${item}/</span>`;
+            }
+        });
+        
+        return items.join('  ');
+    }
+    
+    cat(filename) {
+        const path = this.getFolder(this.currentPath);
+        if (!path || !path[filename]) {
+            return `<span class="error">cat: ${filename}: No such file</span>`;
+        }
+        return path[filename];
+    }
+    
+    cd(dirname) {
+        if (!dirname || dirname === '~') {
+            this.currentPath = '~';
+            return '';
+        }
+        
+        const path = this.getFolder(this.currentPath);
+        if (path && path[dirname] && typeof path[dirname] === 'object') {
+            this.currentPath = `${this.currentPath}/${dirname}`;
+            return '';
+        }
+        
+        return `<span class="error">cd: ${dirname}: No such directory</span>`;
+    }
+    
+    banner() {
+        return `<Portnix Terminal>
+   
+╭━━━┳━━━┳━━━┳━╮╱╭┳━━━┳━━━┳━━━┳━━━╮
+┃╭━╮┃╭━╮┃╭━━┫┃╰╮┃┃╭━╮┃╭━━┻╮╭╮┣╮╭╮┃
+┃┃╱┃┃╰━╯┃╰━━┫╭╮╰╯┃╰━╯┃╰━━╮┃┃┃┃┃┃┃┃
+┃╰━╯┃╭╮╭┫╭━━┫┃╰╮┃┃╭╮╭┫╭━━╯┃┃┃┃┃┃┃┃
+┃╭━╮┃┃┃╰┫╰━━┫┃╱┃┃┃┃┃╰┫╰━━┳╯╰╯┣╯╰╯┃
+╰╯╱╰┻╯╰━┻━━━┻╯╱╰━┻╯╰━┻━━━┻━━━┻━━━╯
+
+Secure Terminal v1.0
+<Welcome To My Portfolio>`;
+    }
+    
+    sudo(cmd) {
+        if (cmd === 'rm -rf /') {
+            return `<span class="error">Nice try. System protections engaged.</span>`;
+        }
+        return `<span class="error">sudo: ${cmd}: command not found</span>`;
+    }
+    
+    getFolder(path) {
+        const parts = path.split('/').filter(p => p);
+        let current = this.fileSystem;
+        
+        for (const part of parts) {
+            if (current[part] && typeof current[part] === 'object') {
+                current = current[part];
+            } else {
+                return null;
+            }
+        }
+        
+        return current;
+    }
+    
+    printBanner() {
+        const bannerElement = document.createElement('pre');
+        bannerElement.className = 'line ascii-art';
+        bannerElement.textContent = this.banner();
+    
+        this.output.appendChild(bannerElement);
+    
+        // Fetch quotes from local JSON
+        fetch('quotes.json')
+            .then(res => res.json())
+            .then(quotes => {
+                const quote = quotes[Math.floor(Math.random() * quotes.length)];
+                const quoteElement = this.createLine(`"${quote}"`, 'quote');
+                this.output.appendChild(quoteElement);
+    
+                const welcome = this.createLine('Type "help" to list available commands');
+                this.output.appendChild(welcome);
+            })
+            .catch(err => {
+                const fallback = this.createLine('> Secure connection established. No quotes loaded.', 'quote');
+                this.output.appendChild(fallback);
+                const welcome = this.createLine('Type "help" to list available commands');
+                this.output.appendChild(welcome);
+            });
+    }
+    
+}
+
+// Initialize terminal when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new HackerTerminal();
+});
+
