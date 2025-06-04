@@ -2167,7 +2167,7 @@ header {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1100; /* Higher than header's z-index */
+    z-index: 1100;
     background: rgba(10, 10, 10, 0.9);
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
@@ -2178,7 +2178,6 @@ header {
     justify-content: center;
     cursor: pointer;
     border-radius: 4px;
-    transition: all 0.3s ease;
 }
 
 .header-toggle:hover {
