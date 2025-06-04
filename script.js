@@ -134,45 +134,38 @@ document.querySelectorAll('.glitch-text, .glitch-image').forEach(element => {
     });
 });
 
-const header = document.querySelector('header');
-const toggleBtn = document.getElementById('header-toggle');
-const icon = toggleBtn.querySelector('.btn-icon');
-const spacer = document.querySelector('.header-spacer');
-
-// Set initial state based on screen size
-let isHeaderVisible = true;
-
-function updateHeaderState() {
-    // Toggle classes instead of direct style manipulation
-    header.classList.toggle('header-hidden', !isHeaderVisible);
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('header');
+    const toggleBtn = document.getElementById('header-toggle');
+    const icon = toggleBtn.querySelector('.btn-icon');
+    const spacer = document.querySelector('.header-spacer');
     
-    // Set spacer height based on screen size
-    const mobileHeight = '120px';
-    const desktopHeight = '60px';
-    spacer.style.height = isHeaderVisible 
-        ? (window.innerWidth <= 768 ? mobileHeight : desktopHeight)
-        : '0';
-    
-    // Update the button arrow
-    icon.textContent = isHeaderVisible ? '▾' : '▴';
-}
+    let isHeaderVisible = true;
 
-toggleBtn.addEventListener('click', () => {
-    isHeaderVisible = !isHeaderVisible;
-    updateHeaderState();
+    // Initialize header state
+    function initHeader() {
+        const mobileHeight = window.innerWidth <= 768 ? '120px' : '60px';
+        spacer.style.height = isHeaderVisible ? mobileHeight : '0';
+        header.style.transform = isHeaderVisible ? 'translateY(0)' : 'translateY(-100%)';
+    }
+
+    // Toggle header visibility
+    function toggleHeader() {
+        isHeaderVisible = !isHeaderVisible;
+        const mobileHeight = window.innerWidth <= 768 ? '120px' : '60px';
+        
+        header.style.transform = isHeaderVisible ? 'translateY(0)' : 'translateY(-100%)';
+        spacer.style.height = isHeaderVisible ? mobileHeight : '0';
+        icon.textContent = isHeaderVisible ? '▾' : '▴';
+    }
+
+    // Event listeners
+    toggleBtn.addEventListener('click', toggleHeader);
+    window.addEventListener('resize', initHeader);
+    
+    // Initialize
+    initHeader();
 });
-
-// Handle initial load and resize
-function handleResize() {
-    updateHeaderState();
-}
-
-window.addEventListener('load', handleResize);
-window.addEventListener('resize', handleResize);
-
-// Initialize
-handleResize();
-
 // Glitch effect on hover
 const glitchElements = document.querySelectorAll('.glitch-effect');
 
