@@ -2372,3 +2372,20 @@ header {
     line-height: 1.2;
     margin-bottom: 1rem;
 }
+
+#orbCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    z-index: -1;
+    background: #000;
+  }
+  .hanging-emoji {
+    height: 100px;
+    vertical-align: bottom;
+    margin-top: 2px; /* optional */
+  }
+  

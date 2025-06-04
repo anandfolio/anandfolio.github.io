@@ -462,3 +462,56 @@ document.addEventListener('DOMContentLoaded', () => {
     new HackerTerminal();
 });
 
+const canvas = document.getElementById("orbCanvas");
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 4;
+
+const geometry = new THREE.SphereGeometry(1, 64, 64);
+const material = new THREE.MeshStandardMaterial({
+  color: 0x00ff00,
+  emissive: 0x00ff00,
+  emissiveIntensity: 0.5,
+  metalness: 0.3,
+  roughness: 0.2
+});
+const sphere = new THREE.Mesh(geometry, material);
+scene.add(sphere);
+
+const pointLight = new THREE.PointLight(0x00ff00, 1, 100);
+pointLight.position.set(0, 0, 3);
+scene.add(pointLight);
+
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener("mousemove", (event) => {
+  mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+});
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Smooth follow effect
+  sphere.rotation.y += 0.005;
+  sphere.rotation.x += 0.005;
+
+  pointLight.position.x = mouseX * 5;
+  pointLight.position.y = mouseY * 5;
+
+  renderer.render(scene, camera);
+}
+
+animate();
+
+window.addEventListener("resize", () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
