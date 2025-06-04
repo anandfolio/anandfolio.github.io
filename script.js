@@ -134,6 +134,45 @@ document.querySelectorAll('.glitch-text, .glitch-image').forEach(element => {
     });
 });
 
+const header = document.querySelector('header');
+const toggleBtn = document.getElementById('header-toggle');
+const icon = toggleBtn.querySelector('.btn-icon');
+const spacer = document.querySelector('.header-spacer');
+
+// Set initial state based on screen size
+let isHeaderVisible = true;
+
+function updateHeaderState() {
+    // Toggle classes instead of direct style manipulation
+    header.classList.toggle('header-hidden', !isHeaderVisible);
+    
+    // Set spacer height based on screen size
+    const mobileHeight = '120px';
+    const desktopHeight = '60px';
+    spacer.style.height = isHeaderVisible 
+        ? (window.innerWidth <= 768 ? mobileHeight : desktopHeight)
+        : '0';
+    
+    // Update the button arrow
+    icon.textContent = isHeaderVisible ? '▾' : '▴';
+}
+
+toggleBtn.addEventListener('click', () => {
+    isHeaderVisible = !isHeaderVisible;
+    updateHeaderState();
+});
+
+// Handle initial load and resize
+function handleResize() {
+    updateHeaderState();
+}
+
+window.addEventListener('load', handleResize);
+window.addEventListener('resize', handleResize);
+
+// Initialize
+handleResize();
+
 // Glitch effect on hover
 const glitchElements = document.querySelectorAll('.glitch-effect');
 

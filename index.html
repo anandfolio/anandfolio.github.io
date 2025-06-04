@@ -8,6 +8,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
+<script>
+    const header = document.querySelector('header');
+    const toggleBtn = document.getElementById('header-toggle');
+    const icon = toggleBtn.querySelector('.btn-icon');
+    const spacer = document.querySelector('.header-spacer');
+
+    let isHeaderVisible = true;
+
+    toggleBtn.addEventListener('click', () => {
+        isHeaderVisible = !isHeaderVisible;
+
+        // Slide header up/down
+        header.style.transform = isHeaderVisible ? 'translateY(0)' : 'translateY(-100%)';
+        
+        // Adjust the spacer height
+        spacer.style.height = isHeaderVisible ? '70px' : '0';
+
+        // Update the button arrow
+        icon.textContent = isHeaderVisible ? '▾' : '▴';
+    });
+</script>
 <body>
     <div class="glitch-overlay"></div>
     
@@ -35,7 +56,9 @@
             </ul>
         </nav>
     </header>
-    
+    <button id="header-toggle" class="header-toggle" aria-label="Toggle navigation">
+        <span class="btn-icon">▾</span>
+    </button>
     <div class="header-spacer"></div>
 
     <main>

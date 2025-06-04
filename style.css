@@ -40,7 +40,9 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
-    padding-top: 60px;
+    /* Remove any padding-top you might have had */
+    margin: 0;
+    padding: 0;
 }
 
 /* Glitch Effect */
@@ -69,6 +71,12 @@ header {
     z-index: 1000;
     background: rgba(10, 10, 10, 0.95);
     border-bottom: 1px solid var(--primary-color);
+    transition: transform 0.3s ease; /* Added for smooth toggle */
+}
+
+/* Add this new class for hidden state */
+header.header-hidden {
+    transform: translateY(-100%);
 }
 
 nav {
@@ -78,6 +86,44 @@ nav {
     padding: 1rem 5%;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .nav-links {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        display: none; /* Hidden by default on mobile */
+    }
+    
+    /* Show nav links when header is visible */
+    header:not(.header-hidden) .nav-links {
+        display: flex;
+    }
+    
+    .logo {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Header spacer - crucial for proper content positioning */
+.header-spacer {
+    height: 60px; /* Default desktop height */
+    transition: height 0.3s ease; /* Smooth height transition */
+}
+
+@media (max-width: 768px) {
+    .header-spacer {
+        height: 120px; /* Taller on mobile to account for stacked nav */
+    }
 }
 
 .logo {
@@ -1198,6 +1244,8 @@ footer {
     .nav-links {
         flex-direction: column;
         align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 0;
     }
     
     .terminal-window {
@@ -2069,11 +2117,73 @@ footer {
 }
 
 .header-spacer {
-    height: 70px;
+    height: 60px;
 }
 
 @media (max-width: 768px) {
     .header-spacer {
-        height: 90px;
+        height: 120px;
     }
 }
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+    
+    .logo {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+    
+    .nav-links {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .theme-toggle {
+        margin: 0.5rem 0 0 0;
+    }
+    
+    #header-toggle {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+/* Header transition */
+header {
+    transition: transform 0.3s ease;
+}
+
+.header-hidden {
+    transform: translateY(-100%);
+}
+
+/* Header toggle button positioning */
+.header-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1001;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .header-toggle {
+        top: 10px;
+        right: 10px;
+    }
+}
+
